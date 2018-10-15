@@ -11,7 +11,7 @@ phases:
     commands:
       - echo "Updating package index" && apt-get update
       - echo "Installing jq" && apt-get install -y jq
-      - echo "Installing Terraform ${TERRAFORM_VERSION}" && pushd . && cd /tmp && curl -o terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && echo "${TERRAFORM_SHA256} terraform.zip" | sha256sum -c --quiet && unzip terraform.zip && mv terraform /usr/bin && popd
+      - echo "Installing Terraform ${TERRAFORM_VERSION}" && cd /tmp && curl -o terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && echo "${TERRAFORM_SHA256} terraform.zip" | sha256sum -c --quiet && unzip terraform.zip && mv terraform /usr/bin && cd -
   pre_build:
     commands:
       - echo "Nothing to be done in pre_build phase..."
