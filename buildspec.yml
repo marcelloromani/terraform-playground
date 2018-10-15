@@ -18,8 +18,8 @@ phases:
       - terraform init
   build:
     commands:
-      - pwd
-      - ls -lhaR
+      - terraform plan
+      - terraform apply
   post_build:
     commands:
       - echo Build completed on `date`
