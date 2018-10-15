@@ -14,10 +14,11 @@ phases:
       - echo "Installing Terraform ${TERRAFORM_VERSION}" && cd /tmp && curl -o terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && echo "${TERRAFORM_SHA256} terraform.zip" | sha256sum -c --quiet && unzip terraform.zip && mv terraform /usr/bin
   pre_build:
     commands:
-      - terraform init
+      - echo "Nothing to be done in pre_build phase..."
   build:
     commands:
-      - echo "Checking terraform binary" && terraform --version
+      - terraform --version
+      - terraform init
   post_build:
     commands:
       - echo Build completed on `date`
