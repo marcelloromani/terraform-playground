@@ -17,6 +17,8 @@ phases:
       - echo "Nothing to be done in pre_build phase..."
   build:
     commands:
+      - pwd
+      - ls -lhaR
       - terraform --version
       - terraform init
   post_build:
