@@ -1,10 +1,16 @@
 version: 0.2
 
+env:
+  variables:
+    TERRAFORM_VERSION: "0.11.8"
+    TERRAFORM_SHA256: "84ccfb8e13b5fce63051294f787885b76a1fedef6bdbecf51c5e586c9e20c9b7"
+
 phases:
   install:
     commands:
       - echo "Updating package index" && apt-get update
       - echo "Installing jq" && apt-get install -y jq
+      - echo "Installing Terraform ${TERRAFORM_VERSION}" && cd /tmp && curl -o terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && echo "${TERRAFORM_SHA256} terraform.zip" | sha256sum -c --quiet && unzip terraform.zip && mv terraform /usr/bin
   pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
