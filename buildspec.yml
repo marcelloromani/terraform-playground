@@ -3,7 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Nothing to do in the install phase...
+      - echo "Updating package index" && apt-get update
+      - echo "Installing jq" && apt-get install -y jq
   pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
